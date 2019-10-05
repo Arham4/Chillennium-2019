@@ -8,7 +8,18 @@ namespace Game
 
         private void Start()
         {
-            var backseatTransform = GameObject.Find("Backseat").transform;
+            var backseat = GameObject.Find("Backseat");
+            if (backseat == null)
+            {
+                Debug.LogError("Backseat is null!");
+                return;
+            }
+            var backseatTransform = backseat.transform;
+            if (Camera.main == null)
+            {
+                Debug.LogError("Main camera is null! (Shotgun)");
+                return;
+            }
             _backseatTranslation = new TriggerableTranslation(Camera.main.gameObject, 
                 backseatTransform.position + new Vector3(0, backseatTransform.lossyScale.y * 0.65f, -5), 25);
         }

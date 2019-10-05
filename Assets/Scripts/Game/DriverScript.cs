@@ -8,7 +8,18 @@ namespace Game
 
         private void Start()
         {
-            var shotgunTransform = GameObject.Find("Shotgun").transform;
+            var shotgun = GameObject.Find("Shotgun");
+            if (shotgun == null)
+            {
+                Debug.LogError("Shotgun is null!");
+                return;
+            }
+            var shotgunTransform = shotgun.transform;
+            if (Camera.main == null)
+            {
+                Debug.LogError("Main camera is null! (Driver)");
+                return;
+            }
             _shotgunTranslation = new TriggerableTranslation(Camera.main.gameObject, 
                 shotgunTransform.position + new Vector3(0, shotgunTransform.lossyScale.y * 0.65f, -5), 25);
         }

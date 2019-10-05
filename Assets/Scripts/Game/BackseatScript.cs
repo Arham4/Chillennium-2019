@@ -8,7 +8,18 @@ namespace Game
 
         private void Start()
         {
-            var backseatTransform = GameObject.Find("Driver").transform;
+            var driver = GameObject.Find("Driver");
+            if (driver == null)
+            {
+                Debug.LogError("Driver is null!");
+                return;
+            }
+            var backseatTransform = driver.transform;
+            if (Camera.main == null)
+            {
+                Debug.LogError("Main camera is null! (Backseat)");
+                return;
+            }
             _backseatTranslation = new TriggerableTranslation(Camera.main.gameObject, 
                 backseatTransform.position + new Vector3(0, backseatTransform.lossyScale.y * 0.65f, -5), 25);
         }
