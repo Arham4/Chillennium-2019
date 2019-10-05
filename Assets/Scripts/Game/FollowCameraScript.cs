@@ -14,7 +14,7 @@ namespace Game
 
         private void Update()
         {
-            if (GameSingleton.Instance.currentGameObject == null)
+            if (GameSingleton.Instance.currentGameObject == null || GameSingleton.Instance.cameraDisruption)
             {
                 return;
             }

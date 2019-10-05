@@ -48,6 +48,11 @@ namespace Game
 
         private void UpdateMovement()
         {
+            if (GameSingleton.Instance.cameraDisruption)
+            {
+                return;
+            }
+            
             if (Input.GetKeyDown(KeyCode.A))
             {
                 _car.transform.Translate(-TurningSpeed, 0, 0);
