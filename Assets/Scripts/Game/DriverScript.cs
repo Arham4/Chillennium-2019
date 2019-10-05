@@ -4,17 +4,22 @@ namespace Game
 {
     public class DriverScript : MonoBehaviour
     {
+        [SerializeField]
+        private const float TurningSpeed = 5f;
         private TriggerableTranslation _shotgunTranslation;
+        private TriggerableTranslation _movementTranslation;
+        private GameObject _car;
+        private GameObject _shotgun;
 
         private void Start()
         {
-            var shotgun = GameObject.Find("Shotgun");
-            if (shotgun == null)
+            _shotgun = GameObject.Find("Shotgun");
+            if (_shotgun == null)
             {
                 Debug.LogError("Shotgun is null!");
                 return;
             }
-            var shotgunTransform = shotgun.transform;
+            var shotgunTransform = _shotgun.transform;
             if (Camera.main == null)
             {
                 Debug.LogError("Main camera is null! (Driver)");
@@ -22,6 +27,12 @@ namespace Game
             }
             _shotgunTranslation = new TriggerableTranslation(Camera.main.gameObject, 
                 shotgunTransform.position + new Vector3(0, shotgunTransform.lossyScale.y * 0.65f, -5), 25);
+            _car = GameObject.Find("Car");
+            if (_car == null)
+            {
+                Debug.LogError("Car is null!");
+                return;
+            }
         }
 
         private void Update()
@@ -30,6 +41,25 @@ namespace Game
             {
                 return;
             }
+
+            UpdateMovement();
+            UpdatePassengerSwitching();
+        }
+
+        private void UpdateMovement()
+        {
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                _car.transform.Translate(-TurningSpeed, 0, 0);
+            } 
+            else if (Input.GetKeyDown(KeyCode.D))
+            {
+                _car.transform.Translate(TurningSpeed, 0, 0);
+            }
+        }
+        
+        private void UpdatePassengerSwitching()
+        {
             if (Input.GetKeyDown("space"))
             {
                 _shotgunTranslation.Trigger();
@@ -37,7 +67,7 @@ namespace Game
             _shotgunTranslation.Execute(then: () =>
             {
                 _shotgunTranslation.Reset();
-                GameSingleton.Instance.currentView = View.Shotgun;
+                GameSingleton.Instance.UpdateGame(View.Shotgun, _shotgun);
                 Debug.Log("current view is now Shotgun");
             });
         }

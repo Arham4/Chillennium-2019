@@ -4,17 +4,18 @@ namespace Game
 {
     public class ShotgunScript : MonoBehaviour
     {
+        private GameObject _backseat;
         private TriggerableTranslation _backseatTranslation;
 
         private void Start()
         {
-            var backseat = GameObject.Find("Backseat");
-            if (backseat == null)
+            _backseat = GameObject.Find("Backseat");
+            if (_backseat == null)
             {
                 Debug.LogError("Backseat is null!");
                 return;
             }
-            var backseatTransform = backseat.transform;
+            var backseatTransform = _backseat.transform;
             if (Camera.main == null)
             {
                 Debug.LogError("Main camera is null! (Shotgun)");
@@ -37,7 +38,7 @@ namespace Game
             _backseatTranslation.Execute(then: () =>
             {
                 _backseatTranslation.Reset();
-                GameSingleton.Instance.currentView = View.Backseat;
+                GameSingleton.Instance.UpdateGame(View.Backseat, _backseat);
                 Debug.Log("current view is now Backseat");
             });
         }

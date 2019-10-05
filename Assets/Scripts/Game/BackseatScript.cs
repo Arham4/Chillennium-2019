@@ -5,16 +5,17 @@ namespace Game
     public class BackseatScript : MonoBehaviour
     {
         private TriggerableTranslation _backseatTranslation;
+        private GameObject _driver;
 
         private void Start()
         {
-            var driver = GameObject.Find("Driver");
-            if (driver == null)
+            _driver = GameObject.Find("Driver");
+            if (_driver == null)
             {
                 Debug.LogError("Driver is null!");
                 return;
             }
-            var backseatTransform = driver.transform;
+            var backseatTransform = _driver.transform;
             if (Camera.main == null)
             {
                 Debug.LogError("Main camera is null! (Backseat)");
@@ -37,7 +38,7 @@ namespace Game
             _backseatTranslation.Execute(then: () =>
             {
                 _backseatTranslation.Reset();
-                GameSingleton.Instance.currentView = View.Driver;
+                GameSingleton.Instance.UpdateGame(View.Driver, _driver);
                 Debug.Log("current view is now Driver (backseat)");
             });
         }
