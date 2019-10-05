@@ -16,12 +16,12 @@ namespace Game
             if (_driver == null)
             {
                 Debug.LogError("Driver is null!");
-                return;
+                return;    
             }
             var driverTransform = _driver.transform;
             var cameraObject = gameObject;
             _translation = new Translation(cameraObject,
-                driverTransform.position + new Vector3(0, driverTransform.lossyScale.y * 0.65f, -5), 40);
+                driverTransform.position + new Vector3(0, driverTransform.lossyScale.y * 0.65f, -5), 20);
         }
 
         private void Update()
