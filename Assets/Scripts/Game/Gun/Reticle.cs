@@ -9,12 +9,7 @@ namespace Game.Gun
         {
             if (GameSingleton.Instance.currentView == View.Backseat)
             {
-                Cursor.visible = true;
                 transform.position = Input.mousePosition;
-            }
-            else
-            {
-                Cursor.visible = false;
             }
         }
     }
