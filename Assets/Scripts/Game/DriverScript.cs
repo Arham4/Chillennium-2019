@@ -4,7 +4,8 @@ namespace Game
 {
     public class DriverScript : MonoBehaviour
     {
-        [SerializeField] private const float TurningSpeed = 5f;
+        //[SerializeField] private const float TurningSpeed = 5f;
+        [SerializeField] public float TurningSpeed = 5f;
         private TriggerableAnimatedAnimatedTranslation _shotgunAnimatedAnimatedTranslation;
         private TriggerableAnimatedAnimatedTranslation _movementAnimatedAnimatedTranslation;
         private GameObject _car;
