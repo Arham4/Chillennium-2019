@@ -4,7 +4,7 @@ namespace Game
 {
     public class BackseatScript : MonoBehaviour
     {
-        private TriggerableTranslation _backseatTranslation;
+        private TriggerableAnimatedAnimatedTranslation _backseatAnimatedAnimatedTranslation;
         private GameObject _driver;
         private Camera _camera;
         private GameObject _zombies;
@@ -33,7 +33,7 @@ namespace Game
             }
 
             _camera = Camera.main;
-            _backseatTranslation = new TriggerableTranslation(Camera.main.gameObject,
+            _backseatAnimatedAnimatedTranslation = new TriggerableAnimatedAnimatedTranslation(Camera.main.gameObject,
                 backseatTransform, 25, offset: new Vector3(0, backseatTransform.lossyScale.y * 0.65f));
         }
 
@@ -51,12 +51,12 @@ namespace Game
                 Quaternion.RotateTowards(_camera.transform.rotation, rotateDirection, 180 * Time.deltaTime);
             if (Input.GetKeyDown("space"))
             {
-                _backseatTranslation.Trigger();
+                _backseatAnimatedAnimatedTranslation.Trigger();
             }
 
-            _backseatTranslation.Execute(then: () =>
+            _backseatAnimatedAnimatedTranslation.Execute(then: () =>
             {
-                _backseatTranslation.Reset();
+                _backseatAnimatedAnimatedTranslation.Reset();
                 GameSingleton.Instance.UpdateGame(View.Driver, _driver);
                 Debug.Log("current view is now Driver (backseat)");
             });

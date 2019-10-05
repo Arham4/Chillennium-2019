@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 
-public class TriggerableTranslation : Translation
+public class TriggerableAnimatedAnimatedTranslation : AnimatedTranslation
 {
     private bool _trigger;
 
-    public TriggerableTranslation(GameObject obj, Transform to, float speed, Vector3 offset = default) : base(obj, to, speed, offset) { }
+    public TriggerableAnimatedAnimatedTranslation(GameObject obj, Transform to, float speed, Vector3 offset = default) : base(obj, to, speed, offset) { }
     
     public void Trigger()
     {

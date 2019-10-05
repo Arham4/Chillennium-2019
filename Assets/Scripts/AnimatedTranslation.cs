@@ -5,7 +5,7 @@ using UnityEngine.UIElements;
 
 public delegate void Then();
 
-public class Translation
+public class AnimatedTranslation
 {
     private readonly GameObject _object;
     private readonly Transform _to;
@@ -13,7 +13,7 @@ public class Translation
     private bool _completed;
     private Vector3 _offset;
 
-    public Translation(GameObject obj, Transform to, float speed, Vector3 offset = default)
+    public AnimatedTranslation(GameObject obj, Transform to, float speed, Vector3 offset = default)
     {
         _object = obj;
         _to = to;

@@ -5,8 +5,8 @@ namespace Game
     public class DriverScript : MonoBehaviour
     {
         [SerializeField] private const float TurningSpeed = 5f;
-        private TriggerableTranslation _shotgunTranslation;
-        private TriggerableTranslation _movementTranslation;
+        private TriggerableAnimatedAnimatedTranslation _shotgunAnimatedAnimatedTranslation;
+        private TriggerableAnimatedAnimatedTranslation _movementAnimatedAnimatedTranslation;
         private GameObject _car;
         private GameObject _shotgun;
         private Camera _camera;
@@ -28,7 +28,7 @@ namespace Game
             }
 
             _camera = Camera.main;
-            _shotgunTranslation = new TriggerableTranslation(Camera.main.gameObject,
+            _shotgunAnimatedAnimatedTranslation = new TriggerableAnimatedAnimatedTranslation(Camera.main.gameObject,
                 shotgunTransform, 25, offset: new Vector3(0, shotgunTransform.lossyScale.y * 0.65f));
             _car = GameObject.Find("Car");
             if (_car == null)
@@ -72,12 +72,12 @@ namespace Game
         {
             if (Input.GetKeyDown("space"))
             {
-                _shotgunTranslation.Trigger();
+                _shotgunAnimatedAnimatedTranslation.Trigger();
             }
 
-            _shotgunTranslation.Execute(then: () =>
+            _shotgunAnimatedAnimatedTranslation.Execute(then: () =>
             {
-                _shotgunTranslation.Reset();
+                _shotgunAnimatedAnimatedTranslation.Reset();
                 GameSingleton.Instance.UpdateGame(View.Shotgun, _shotgun);
                 Debug.Log("current view is now Shotgun");
             });

@@ -5,7 +5,7 @@ namespace Game
     public class ShotgunScript : MonoBehaviour
     {
         private GameObject _backseat;
-        private TriggerableTranslation _backseatTranslation;
+        private TriggerableAnimatedAnimatedTranslation _backseatAnimatedAnimatedTranslation;
         private GameObject _zombies;
         private Camera _camera;
 
@@ -33,7 +33,7 @@ namespace Game
                 return;
             }
 
-            _backseatTranslation = new TriggerableTranslation(Camera.main.gameObject,
+            _backseatAnimatedAnimatedTranslation = new TriggerableAnimatedAnimatedTranslation(Camera.main.gameObject,
                 backseatTransform, 25, offset: new Vector3(0, backseatTransform.lossyScale.y * 0.65f));
         }
 
@@ -46,10 +46,10 @@ namespace Game
 
             if (Input.GetKeyDown("space"))
             {
-                _backseatTranslation.Trigger();
+                _backseatAnimatedAnimatedTranslation.Trigger();
             }
 
-            if (_backseatTranslation.isTrigger() && !_backseatTranslation.isFinished())
+            if (_backseatAnimatedAnimatedTranslation.isTrigger() && !_backseatAnimatedAnimatedTranslation.isFinished())
             {
                 Quaternion rotateDirection =
                     Quaternion.LookRotation(_zombies.transform.position - _camera.transform.position +
@@ -58,9 +58,9 @@ namespace Game
                     Quaternion.RotateTowards(_camera.transform.rotation, rotateDirection, 180 * Time.deltaTime);
             }
 
-            _backseatTranslation.Execute(then: () =>
+            _backseatAnimatedAnimatedTranslation.Execute(then: () =>
             {
-                _backseatTranslation.Reset();
+                _backseatAnimatedAnimatedTranslation.Reset();
                 GameSingleton.Instance.UpdateGame(View.Backseat, _backseat);
                 Debug.Log("current view is now Backseat");
             });

@@ -6,7 +6,7 @@ namespace Game
 {
     public class DramaticCameraScript : MonoBehaviour
     {
-        private Translation _translation;
+        private AnimatedTranslation _animatedTranslation;
         private GameObject _driver;
         public static bool done;
 
@@ -21,13 +21,13 @@ namespace Game
 
             var driverTransform = _driver.transform;
             var cameraObject = gameObject;
-            _translation = new Translation(cameraObject,
+            _animatedTranslation = new AnimatedTranslation(cameraObject,
                 driverTransform, 20, offset: new Vector3(0, driverTransform.lossyScale.y * 0.65f, -5));
         }
 
         private void Update()
         {
-            _translation.Execute(then: () =>
+            _animatedTranslation.Execute(then: () =>
             {
                 if (GameSingleton.Instance == null)
                 {
