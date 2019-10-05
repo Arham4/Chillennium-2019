@@ -5,8 +5,9 @@ namespace Game.Gun
 {
     public class Bullet : MonoBehaviour, IBullet
     {
-        [SerializeField] private float speed;
-        private AnimatedTranslation _bulletMotion;
+        [SerializeField] private float speed = 2f;
+        private bool _fire;
+        private Vector3 _endLocation;
         private Rigidbody _rigidBody;
 
         private void Start()
@@ -21,13 +22,17 @@ namespace Game.Gun
 
         private void Update()
         {
-            _bulletMotion?.Execute();
+            if (_fire)
+            {
+                transform.LookAt(_endLocation);
+                _rigidBody.AddForce(Vector3.forward * speed);
+            }
         }
 
         public void Fire(Vector3 endLocation)
         {
-            transform.LookAt(endLocation);
-            _rigidBody.AddForce(Vector3.forward * speed);
+            _endLocation = endLocation;
+            _fire = true;
         }
 
         public int GetDamage()
