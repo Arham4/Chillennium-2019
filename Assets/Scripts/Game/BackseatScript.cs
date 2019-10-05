@@ -4,13 +4,13 @@ namespace Game
 {
     public class BackseatScript : MonoBehaviour
     {
-        private TriggerableTranslation _driverTranslation;
+        private TriggerableTranslation _backseatTranslation;
 
         private void Start()
         {
-            var driverTransform = GameObject.Find("Driver").transform;
-            _driverTranslation = new TriggerableTranslation(Camera.main.gameObject, 
-                driverTransform.position + new Vector3(0, driverTransform.lossyScale.y * 0.65f, -5), 25);
+            var backseatTransform = GameObject.Find("Driver").transform;
+            _backseatTranslation = new TriggerableTranslation(Camera.main.gameObject, 
+                backseatTransform.position + new Vector3(0, backseatTransform.lossyScale.y * 0.65f, -5), 25);
         }
 
         private void Update()
@@ -21,13 +21,13 @@ namespace Game
             }
             if (Input.GetKeyDown("space"))
             {
-                _driverTranslation.Trigger();
+                _backseatTranslation.Trigger();
             }
-            _driverTranslation.Execute(then: () =>
+            _backseatTranslation.Execute(then: () =>
             {
-                _driverTranslation.Reset();
+                _backseatTranslation.Reset();
                 GameSingleton.Instance.currentView = View.Driver;
-                Debug.Log("current view is now Driver");
+                Debug.Log("current view is now Driver (backseat)");
             });
         }
     }

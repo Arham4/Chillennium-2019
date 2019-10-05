@@ -11,6 +11,11 @@ public class TriggerableTranslation : Translation
         _trigger = true;
     }
 
+    public bool isTrigger()
+    {
+        return _trigger;
+    }
+
     public void ResetTrigger()
     {
         _trigger = false;

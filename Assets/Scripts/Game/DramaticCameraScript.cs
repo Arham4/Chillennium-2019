@@ -21,7 +21,7 @@ namespace Game
             _translation.Execute(then: () =>
             {
                 GameSingleton.Instance.currentView = View.Driver;
-                Debug.Log("current view is now Driver");
+                Debug.Log("current view is now Driver (drama)");
             });
         }
     }
