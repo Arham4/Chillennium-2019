@@ -14,5 +14,20 @@ namespace Menu
         {
             Application.Quit();
         }
+
+        public void helpButton()
+        {
+            SceneManager.LoadScene("HelpMenu");
+        }
+
+        public void backButton()
+        {
+            SceneManager.LoadScene("Menu");
+        }
+
+        public void creditsButton()
+        {
+            SceneManager.LoadScene("Credits");
+        }
     }
 }
