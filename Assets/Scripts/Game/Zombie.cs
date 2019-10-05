@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using Game;
 using Game.Gun;
 using UnityEngine;
@@ -21,6 +22,11 @@ public class Zombie : MonoBehaviour, IEnemy
     void Update()
     {
         _navMeshAgent.destination = _car.transform.position;
+
+        if (transform.position.z > 55)
+        {
+            SceneManager.LoadScene("GameOver");
+        }
     }
 
     public void OnHit(IBullet bullet)

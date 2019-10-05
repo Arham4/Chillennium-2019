@@ -29,5 +29,10 @@ namespace Menu
         {
             SceneManager.LoadScene("Credits");
         }
+
+        public void GameOver()
+        {
+            SceneManager.LoadScene("GameOver");
+        }
     }
 }
