@@ -17,21 +17,24 @@ namespace Game
                 Debug.LogError("Driver is null!");
                 return;
             }
+
             _zombies = GameObject.Find("Zombies");
             if (_zombies == null)
             {
                 Debug.LogError("Zombies are null!");
                 return;
             }
+
             var backseatTransform = _driver.transform;
             if (Camera.main == null)
             {
                 Debug.LogError("Main camera is null! (Backseat)");
                 return;
             }
+
             _camera = Camera.main;
-            _backseatTranslation = new TriggerableTranslation(Camera.main.gameObject, 
-                backseatTransform.position + new Vector3(0, backseatTransform.lossyScale.y * 0.65f, -5), 25);
+            _backseatTranslation = new TriggerableTranslation(Camera.main.gameObject,
+                backseatTransform, 25, offset: new Vector3(0, backseatTransform.lossyScale.y * 0.65f));
         }
 
         private void Update()
@@ -40,14 +43,17 @@ namespace Game
             {
                 return;
             }
+
             Quaternion rotateDirection =
-                Quaternion.LookRotation(_zombies.transform.position - _camera.transform.position + new Vector3(0, 10, 0));
+                Quaternion.LookRotation(
+                    _zombies.transform.position - _camera.transform.position + new Vector3(0, 10, 0));
             _camera.transform.rotation =
                 Quaternion.RotateTowards(_camera.transform.rotation, rotateDirection, 180 * Time.deltaTime);
             if (Input.GetKeyDown("space"))
             {
                 _backseatTranslation.Trigger();
             }
+
             _backseatTranslation.Execute(then: () =>
             {
                 _backseatTranslation.Reset();

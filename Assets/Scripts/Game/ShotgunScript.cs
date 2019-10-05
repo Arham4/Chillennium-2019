@@ -34,7 +34,7 @@ namespace Game
             }
 
             _backseatTranslation = new TriggerableTranslation(Camera.main.gameObject,
-                backseatTransform.position + new Vector3(0, backseatTransform.lossyScale.y * 0.65f, -5), 25);
+                backseatTransform, 25, offset: new Vector3(0, backseatTransform.lossyScale.y * 0.65f));
         }
 
         private void Update()
@@ -52,7 +52,8 @@ namespace Game
             if (_backseatTranslation.isTrigger() && !_backseatTranslation.isFinished())
             {
                 Quaternion rotateDirection =
-                    Quaternion.LookRotation(_zombies.transform.position - _camera.transform.position + new Vector3(-40, 0, 0));
+                    Quaternion.LookRotation(_zombies.transform.position - _camera.transform.position +
+                                            new Vector3(-40, 0, 0));
                 _camera.transform.rotation =
                     Quaternion.RotateTowards(_camera.transform.rotation, rotateDirection, 180 * Time.deltaTime);
             }

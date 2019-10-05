@@ -4,8 +4,7 @@ namespace Game
 {
     public class DriverScript : MonoBehaviour
     {
-        [SerializeField]
-        private const float TurningSpeed = 5f;
+        [SerializeField] private const float TurningSpeed = 5f;
         private TriggerableTranslation _shotgunTranslation;
         private TriggerableTranslation _movementTranslation;
         private GameObject _car;
@@ -20,15 +19,17 @@ namespace Game
                 Debug.LogError("Shotgun is null!");
                 return;
             }
+
             var shotgunTransform = _shotgun.transform;
             if (Camera.main == null)
             {
                 Debug.LogError("Main camera is null! (Driver)");
                 return;
             }
+
             _camera = Camera.main;
-            _shotgunTranslation = new TriggerableTranslation(Camera.main.gameObject, 
-                shotgunTransform.position + new Vector3(0, shotgunTransform.lossyScale.y * 0.65f, -5), 25);
+            _shotgunTranslation = new TriggerableTranslation(Camera.main.gameObject,
+                shotgunTransform, 25, offset: new Vector3(0, shotgunTransform.lossyScale.y * 0.65f));
             _car = GameObject.Find("Car");
             if (_car == null)
             {
@@ -54,25 +55,26 @@ namespace Game
             {
                 return;
             }
-            
+
             if (Input.GetKeyDown(KeyCode.A))
             {
                 _camera.transform.Translate(-TurningSpeed, 0, 0);
                 _car.transform.Translate(-TurningSpeed, 0, 0);
-            } 
+            }
             else if (Input.GetKeyDown(KeyCode.D))
             {
                 _camera.transform.Translate(TurningSpeed, 0, 0);
                 _car.transform.Translate(TurningSpeed, 0, 0);
             }
         }
-        
+
         private void UpdatePassengerSwitching()
         {
             if (Input.GetKeyDown("space"))
             {
                 _shotgunTranslation.Trigger();
             }
+
             _shotgunTranslation.Execute(then: () =>
             {
                 _shotgunTranslation.Reset();

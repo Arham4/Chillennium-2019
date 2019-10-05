@@ -4,7 +4,7 @@ public class TriggerableTranslation : Translation
 {
     private bool _trigger;
 
-    public TriggerableTranslation(GameObject obj, Vector3 to, float speed) : base(obj, to, speed) { }
+    public TriggerableTranslation(GameObject obj, Transform to, float speed, Vector3 offset = default) : base(obj, to, speed, offset) { }
     
     public void Trigger()
     {
