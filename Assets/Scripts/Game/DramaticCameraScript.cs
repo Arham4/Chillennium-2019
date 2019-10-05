@@ -7,16 +7,18 @@ namespace Game
     public class DramaticCameraScript : MonoBehaviour
     {
         private Translation _translation;
+        private GameObject _driver;
+        public static bool done;
 
         private void Start()
         {
-            var driver = GameObject.Find("Driver");
-            if (driver == null)
+            _driver = GameObject.Find("Driver");
+            if (_driver == null)
             {
                 Debug.LogError("Driver is null!");
                 return;
             }
-            var driverTransform = driver.transform;
+            var driverTransform = _driver.transform;
             var cameraObject = gameObject;
             _translation = new Translation(cameraObject,
                 driverTransform.position + new Vector3(0, driverTransform.lossyScale.y * 0.65f, -5), 40);
@@ -31,7 +33,9 @@ namespace Game
                     Debug.LogError("Game singleton is null!");
                     return;
                 }
-                GameSingleton.Instance.currentView = View.Driver;
+
+                done = true;
+                GameSingleton.Instance.UpdateGame(View.Driver, _driver);
                 Debug.Log("current view is now Driver (drama)");
             });
         }

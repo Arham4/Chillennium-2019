@@ -1,4 +1,5 @@
 ﻿using System;
+using Game;
 using UnityEngine;
 
 public delegate void Then();
@@ -22,14 +23,21 @@ public class Translation
         _completed = false;
     }
 
+    public bool isFinished()
+    {
+        return _completed;
+    }
+
     protected void _execute(Then then)
     {
         if (!_completed)
         {
+            GameSingleton.Instance.cameraDisruption = true;
             _object.transform.position = Vector3.MoveTowards(_object.transform.position,
                 _to, _speed * Time.deltaTime);
             if (_object.transform.position.Equals(_to))
             {
+                GameSingleton.Instance.cameraDisruption = false;
                 _completed = true;
                 then?.Invoke();
             }
