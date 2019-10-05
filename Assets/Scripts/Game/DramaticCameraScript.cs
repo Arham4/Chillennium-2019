@@ -22,7 +22,7 @@ namespace Game
             var driverTransform = _driver.transform;
             var cameraObject = gameObject;
             _animatedTranslation = new AnimatedTranslation(cameraObject,
-                driverTransform, 20, offset: new Vector3(0, driverTransform.lossyScale.y * 0.65f, -5));
+                driverTransform, 60, offset: new Vector3(0, driverTransform.lossyScale.y * 0.65f, -5));
         }
 
         private void Update()
