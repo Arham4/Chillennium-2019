@@ -23,4 +23,10 @@ public class TriggerableTranslation : Translation
             _execute(then);
         }
     }
+
+    public override void Reset()
+    {
+        ResetTrigger();
+        _reset();
+    }
 }

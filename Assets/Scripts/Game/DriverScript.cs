@@ -25,6 +25,8 @@ namespace Game
             }
             _shotgunTranslation.Execute(then: () =>
             {
+                _shotgunTranslation.Reset();
+                
                 GameSingleton.Instance.currentView = View.Shotgun;
                 Debug.Log("current view is now Shotgun");
             });

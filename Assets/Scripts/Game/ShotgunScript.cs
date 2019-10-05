@@ -25,6 +25,7 @@ namespace Game
             }
             _backseatTranslation.Execute(then: () =>
             {
+                _backseatTranslation.Reset();
                 GameSingleton.Instance.currentView = View.Backseat;
                 Debug.Log("current view is now Backseat");
             });
