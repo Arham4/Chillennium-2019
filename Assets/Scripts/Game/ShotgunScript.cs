@@ -53,7 +53,7 @@ namespace Game
             {
                 Quaternion rotateDirection =
                     Quaternion.LookRotation(_zombies.transform.position - _camera.transform.position +
-                                            new Vector3(-40, 0, 0));
+                                            new Vector3(0, 10, 0));
                 _camera.transform.rotation =
                     Quaternion.RotateTowards(_camera.transform.rotation, rotateDirection, 180 * Time.deltaTime);
             }
