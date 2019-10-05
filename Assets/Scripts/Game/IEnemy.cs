@@ -4,6 +4,6 @@ namespace Game
 {
     public interface IEnemy
     {
-        void OnHit(IBullet bullet);
+        void OnHit(IGun gun);
     }
 }

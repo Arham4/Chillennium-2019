@@ -2,6 +2,6 @@
 {
     public interface IGun
     {
-        
+        int GetDamage();
     }
 }

@@ -5,11 +5,8 @@ using UnityEngine.UIElements;
 
 namespace Game.Gun
 {
-    
     public class Gun : MonoBehaviour, IGun
     {
-        [SerializeField]
-        private GameObject bullet;
         private GameObject _reticle;
         private GameObject _backseat;
 
@@ -39,11 +36,21 @@ namespace Game.Gun
 
             if (Input.GetMouseButtonDown(0))
             {
-                Vector3 reticleLocation = _reticle.transform.position;
-                Vector3 bulletStartPosition = new Vector3(reticleLocation.x, reticleLocation.y, _backseat.transform.position.z);
-                IBullet iBullet = Instantiate(bullet, bulletStartPosition, Quaternion.identity).GetComponent<IBullet>();
-                iBullet.Fire(reticleLocation);
+                RaycastHit hit;
+                if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 100f))
+                {
+                    IEnemy iEnemy = hit.transform.GetComponent<IEnemy>();
+                    if (iEnemy != null)
+                    {
+                        iEnemy.OnHit(this);
+                    }
+                }
             }
+        }
+
+        public int GetDamage()
+        {
+            return 1;
         }
     }
 }

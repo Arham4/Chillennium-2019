@@ -21,7 +21,10 @@ public class Zombie : MonoBehaviour, IEnemy
 
     void Update()
     {
-        _navMeshAgent.destination = _car.transform.position;
+        if (_navMeshAgent.isOnNavMesh)
+        {
+            _navMeshAgent.destination = _car.transform.position;
+        }
 
         if (transform.position.z > 55)
         {
@@ -29,12 +32,13 @@ public class Zombie : MonoBehaviour, IEnemy
         }
     }
 
-    public void OnHit(IBullet bullet)
+    public void OnHit(IGun gun)
     {
-        _health -= bullet.GetDamage();
+        _health -= gun.GetDamage();
         if (_health <= 0)
         {
-            Destroy(this);
+            Destroy(gameObject);
+            Debug.Log("Destroy zombie");
         }
     }
 }
