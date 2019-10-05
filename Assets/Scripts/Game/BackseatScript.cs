@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using System.Numerics;
+using UnityEngine;
+using Quaternion = UnityEngine.Quaternion;
+using Vector3 = UnityEngine.Vector3;
 
 namespace Game
 {
@@ -43,15 +46,23 @@ namespace Game
             {
                 return;
             }
-
-            Quaternion rotateDirection =
-                Quaternion.LookRotation(
-                    _zombies.transform.position - _camera.transform.position + new Vector3(0, 10, 0));
-            _camera.transform.rotation =
-                Quaternion.RotateTowards(_camera.transform.rotation, rotateDirection, 180 * Time.deltaTime);
+            
             if (Input.GetKeyDown("space"))
             {
                 _backseatAnimatedAnimatedTranslation.Trigger();
+            }
+            if (_backseatAnimatedAnimatedTranslation.isTrigger())
+            {
+                _camera.transform.rotation =
+                    Quaternion.RotateTowards(_camera.transform.rotation, new Quaternion(0, 0, 0, 1), 180 * Time.deltaTime);
+            }
+            else
+            {
+                Quaternion rotateDirection =
+                    Quaternion.LookRotation(
+                        _zombies.transform.position - _camera.transform.position + new Vector3(0, 10, 0));
+                _camera.transform.rotation =
+                    Quaternion.RotateTowards(_camera.transform.rotation, rotateDirection, 180 * Time.deltaTime);
             }
 
             _backseatAnimatedAnimatedTranslation.Execute(then: () =>
