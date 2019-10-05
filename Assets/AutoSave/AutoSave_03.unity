@@ -869,7 +869,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 1676778937}
-  spawnDelay: 5
+  spawnDelay: 1.84
 --- !u!1 &2030635955
 GameObject:
   m_ObjectHideFlags: 0
