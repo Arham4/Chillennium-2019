@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ZomMenu : MonoBehaviour
+public class ZombieDecoration : MonoBehaviour
 {
     private int counter = 0;
     private bool up;
