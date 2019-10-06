@@ -65,7 +65,7 @@ namespace Game.Gun
 
                 RaycastHit hit;
                 if (Physics.Raycast(Camera.main.ScreenToWorldPoint(_reticle.transform.position),
-                    -_reticle.transform.forward, out hit))
+                    Camera.main.transform.forward, out hit))
                 {
                     IEnemy iEnemy = hit.transform.GetComponent<IEnemy>();
                     if (iEnemy != null)
