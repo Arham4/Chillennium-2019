@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Game
 {
@@ -48,6 +49,11 @@ namespace Game
 
             UpdateMovement();
             UpdatePassengerSwitching();
+
+            if(transform.position.x >= 843f || transform.position.x <= 219f)
+            {
+                SceneManager.LoadScene("GameOver");
+            }
         }
 
         private void UpdateMovement()
