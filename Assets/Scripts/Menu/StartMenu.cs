@@ -34,5 +34,10 @@ namespace Menu
         {
             SceneManager.LoadScene("GameOver");
         }
+
+        public void tutorial()
+        {
+            SceneManager.LoadScene("Tutorial");
+        }
     }
 }
