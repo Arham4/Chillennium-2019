@@ -11,7 +11,8 @@ public class DriveCompleted : MonoBehaviour
     {
         timeLeft -= Time.deltaTime;
 
-        GUI.Label(new Rect(Screen.width / 4, Screen.height - 100, 300f, 50f), "Time: " + timeLeft);
+        GUI.skin.label.normal.textColor = Color.black;
+        GUI.Label(new Rect((float) (Screen.width / 10.0), 100, 300f, 50f), "Time: " + timeLeft);
 
         if (timeLeft < 0)
         {
