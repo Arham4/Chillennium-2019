@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class moveCar : MonoBehaviour
+public class MoveCar : MonoBehaviour
 {
     private float counter = 0;
 

@@ -11,12 +11,14 @@ public class Zombie : MonoBehaviour, IEnemy
     private int _health;
     private GameObject _car;
     private NavMeshAgent _navMeshAgent;
+    private float _defaultNavSpeed;
 
     void Start()
     {
         _navMeshAgent = gameObject.GetComponent<NavMeshAgent>();
         _car = GameObject.Find("Car");
         _health = Random.Range(2, 4);
+        _defaultNavSpeed = _navMeshAgent.speed;
     }
 
     void Update()
@@ -24,6 +26,14 @@ public class Zombie : MonoBehaviour, IEnemy
         if (_navMeshAgent.isOnNavMesh)
         {
             _navMeshAgent.destination = _car.transform.position;
+            if (GameSingleton.Instance.currentSongType == Radio.SongType.Chill)
+            {
+                _navMeshAgent.speed = (float) (_defaultNavSpeed * 0.6);
+            }
+            else
+            {
+                _navMeshAgent.speed = _defaultNavSpeed;
+            }
         }
 
         if (transform.position.z > 55)

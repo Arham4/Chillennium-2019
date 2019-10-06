@@ -5,13 +5,13 @@ namespace Game
 {
     public class DriverScript : MonoBehaviour
     {
-        //[SerializeField] private const float TurningSpeed = 5f;
-        [SerializeField] public float TurningSpeed = 5f;
+        [SerializeField] private const float TurningSpeed = 5f;
         private TriggerableAnimatedAnimatedTranslation _shotgunAnimatedAnimatedTranslation;
         private TriggerableAnimatedAnimatedTranslation _movementAnimatedAnimatedTranslation;
         private GameObject _car;
         private GameObject _shotgun;
         private Camera _camera;
+        private float _actualSpeed;
 
         private void Start()
         {
@@ -38,6 +38,8 @@ namespace Game
                 Debug.LogError("Car is null!");
                 return;
             }
+
+            _actualSpeed = TurningSpeed;
         }
 
         private void Update()
@@ -45,6 +47,15 @@ namespace Game
             if (GameSingleton.Instance.currentView != View.Driver)
             {
                 return;
+            }
+            
+            if (GameSingleton.Instance.currentSongType == Radio.SongType.Pump)
+            {
+                _actualSpeed = TurningSpeed * 3f;
+            }
+            else
+            {
+                _actualSpeed = TurningSpeed;
             }
 
             UpdateMovement();
@@ -65,13 +76,13 @@ namespace Game
 
             if (Input.GetKeyDown(KeyCode.A))
             {
-                _camera.transform.Translate(-TurningSpeed, 0, 0);
-                _car.transform.Translate(-TurningSpeed, 0, 0);
+                _camera.transform.Translate(-_actualSpeed, 0, 0);
+                _car.transform.Translate(-_actualSpeed, 0, 0);
             }
             else if (Input.GetKeyDown(KeyCode.D))
             {
-                _camera.transform.Translate(TurningSpeed, 0, 0);
-                _car.transform.Translate(TurningSpeed, 0, 0);
+                _camera.transform.Translate(_actualSpeed, 0, 0);
+                _car.transform.Translate(_actualSpeed, 0, 0);
             }
         }
 

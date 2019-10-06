@@ -9,6 +9,7 @@ namespace Game
         public View? currentView = null;
         [CanBeNull] public GameObject currentGameObject = null;
         public bool cameraDisruption;
+        public Radio.SongType? currentSongType = null;
 
         public void UpdateGame(View view, GameObject gameObject)
         {
