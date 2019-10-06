@@ -64,6 +64,7 @@ namespace Game
             if(transform.position.x >= 843f || transform.position.x <= 219f)
             {
                 GameSingleton.Instance.deathReason = "You crashed the car.";
+                GameSingleton.Instance.zombieKills = 0;
                 SceneManager.LoadScene("GameOver");
                 SceneManager.UnloadSceneAsync("Game");
             }

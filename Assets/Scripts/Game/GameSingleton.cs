@@ -12,6 +12,7 @@ namespace Game
         public bool cameraDisruption;
         public Radio.SongType? currentSongType = null;
         public String deathReason;
+        public int zombieKills;
 
         public void UpdateGame(View view, GameObject gameObject)
         {

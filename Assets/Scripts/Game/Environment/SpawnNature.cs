@@ -53,6 +53,7 @@ public class SpawnNature : MonoBehaviour
                 if (transform.position.z - posX.z <= 3f && transform.position.z - posX.z >= -3f)
                 {
                     GameSingleton.Instance.deathReason = "You crashed the car.";
+                    GameSingleton.Instance.zombieKills = 0;
                     SceneManager.LoadScene("GameOver");
                     SceneManager.UnloadSceneAsync("Game");
                 }
