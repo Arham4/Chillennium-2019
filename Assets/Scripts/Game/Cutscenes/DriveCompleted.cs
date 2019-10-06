@@ -12,11 +12,14 @@ public class DriveCompleted : MonoBehaviour
     {
         timeLeft -= Time.deltaTime;
 
-        GUI.skin.label.normal.textColor = Color.black;
-        GUI.Label(new Rect((float) (Screen.width / 10.0), 100, 300f, 50f), "Time: " + timeLeft);
+        GUIStyle style = GUI.skin.label;
+        style.fontSize = 36;
+        style.normal.textColor = Color.black;
+        style.wordWrap = false;
+        GUI.Label(new Rect((float) (Screen.width / 10.0), 100, 300f, 100f), "Time: " + timeLeft, style);
         if (GameSingleton.Instance.currentSongType != Radio.SongType.Regular)
         {
-            GUI.Label(new Rect((float) (Screen.width / 10.0), 155, 500f, 50f), "Perk time left: " + Radio.RevertTime);
+            GUI.Label(new Rect((float) (Screen.width / 10.0), 155, 500f, 50f), "Perk time left: " + Radio.RevertTime, style);
         }
         if (timeLeft < 0)
         {

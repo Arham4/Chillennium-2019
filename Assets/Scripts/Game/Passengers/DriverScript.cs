@@ -63,8 +63,9 @@ namespace Game
 
             if(transform.position.x >= 843f || transform.position.x <= 219f)
             {
-                SceneManager.UnloadSceneAsync("Game");
+                GameSingleton.Instance.deathReason = "You crashed the car.";
                 SceneManager.LoadScene("GameOver");
+                SceneManager.UnloadSceneAsync("Game");
             }
         }
 

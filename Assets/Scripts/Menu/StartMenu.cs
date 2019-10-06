@@ -40,12 +40,6 @@ namespace Menu
             SceneManager.LoadScene("Credits");
         }
 
-        public void GameOver()
-        {
-            SceneManager.UnloadSceneAsync("Game");
-            SceneManager.LoadScene("GameOver");
-        }
-
         public void tutorial()
         {
             SceneManager.LoadScene("Tutorial");

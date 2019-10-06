@@ -1,4 +1,5 @@
-﻿using JetBrains.Annotations;
+﻿using System;
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -10,6 +11,7 @@ namespace Game
         [CanBeNull] public GameObject currentGameObject = null;
         public bool cameraDisruption;
         public Radio.SongType? currentSongType = null;
+        public String deathReason;
 
         public void UpdateGame(View view, GameObject gameObject)
         {

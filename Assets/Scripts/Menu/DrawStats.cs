@@ -18,7 +18,7 @@ public class DrawStats : MonoBehaviour
     void OnGUI()
     {
         GUI.skin.label.fontSize = 32;
-
+        GUI.skin.label.normal.textColor = Color.black;
 
         GUI.Label(new Rect(Screen.width / 6 - margin, Screen.height / 3, 250, 100), "MONICA");
         GUI.Label(new Rect(Screen.width / 6 - margin, (Screen.height / 3) + 50, 250, 100), "Health: " + health);

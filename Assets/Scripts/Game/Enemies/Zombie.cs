@@ -38,8 +38,9 @@ public class Zombie : MonoBehaviour, IEnemy
 
         if (transform.position.z > 55)
         {
-            SceneManager.UnloadSceneAsync("Game");
+            GameSingleton.Instance.deathReason = "A zombie got to you.";
             SceneManager.LoadScene("GameOver");
+            SceneManager.UnloadSceneAsync("Game");
         }
     }
 
