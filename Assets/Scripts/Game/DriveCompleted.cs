@@ -12,7 +12,7 @@ public class DriveCompleted : MonoBehaviour
         timeLeft -= Time.deltaTime;
         if (timeLeft < 0)
         {
-            SceneManager.LoadScene("NightTime");
+            SceneManager.LoadScene("CarCutScene");
             Debug.Log("MY MOM");
         }
 

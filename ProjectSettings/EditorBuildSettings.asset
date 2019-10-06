@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Tutorial.unity
     guid: 91c33ab1376764149b653f40c318e1d9
+  - enabled: 1
+    path: Assets/Scenes/CarCutScene.unity
+    guid: 90748cdb99f2ec6459fcb6f85b304a93
   m_configObjects: {}
