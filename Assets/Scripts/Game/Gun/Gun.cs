@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Experimental.PlayerLoop;
 using UnityEngine.UIElements;
@@ -37,8 +38,12 @@ namespace Game.Gun
             if (Input.GetMouseButtonDown(0))
             {
                 RaycastHit hit;
-                if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit))
+                Debug.Log("Shot");
+                Debug.DrawRay(Camera.main.transform.position, -_reticle.transform.forward, Color.red);
+                if (Physics.Raycast(Camera.main.transform.position,
+                    -_reticle.transform.forward, out hit))
                 {
+                    Debug.Log("Hit " + hit.transform.name);
                     IEnemy iEnemy = hit.transform.GetComponent<IEnemy>();
                     if (iEnemy != null)
                     {
