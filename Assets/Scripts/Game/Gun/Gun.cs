@@ -37,7 +37,7 @@ namespace Game.Gun
             if (Input.GetMouseButtonDown(0))
             {
                 RaycastHit hit;
-                if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 100f))
+                if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit))
                 {
                     IEnemy iEnemy = hit.transform.GetComponent<IEnemy>();
                     if (iEnemy != null)

@@ -35,6 +35,7 @@ public class Zombie : MonoBehaviour, IEnemy
     public void OnHit(IGun gun)
     {
         _health -= gun.GetDamage();
+        Debug.Log("Zombie health now " + _health);
         if (_health <= 0)
         {
             Destroy(gameObject);
