@@ -38,6 +38,7 @@ public class Zombie : MonoBehaviour, IEnemy
 
         if (transform.position.z > 55)
         {
+            SceneManager.UnloadSceneAsync("Game");
             SceneManager.LoadScene("GameOver");
         }
     }

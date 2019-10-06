@@ -42,6 +42,7 @@ namespace Menu
 
         public void GameOver()
         {
+            SceneManager.UnloadSceneAsync("Game");
             SceneManager.LoadScene("GameOver");
         }
 
@@ -52,7 +53,7 @@ namespace Menu
 
         public void Night()
         {
-            SceneManager.LoadScene("NightTime");
+            SceneManager.LoadScene("Menu");
         }
     }
 }

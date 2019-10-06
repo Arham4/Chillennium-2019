@@ -63,6 +63,7 @@ namespace Game
 
             if(transform.position.x >= 843f || transform.position.x <= 219f)
             {
+                SceneManager.UnloadSceneAsync("Game");
                 SceneManager.LoadScene("GameOver");
             }
         }

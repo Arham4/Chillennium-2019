@@ -52,6 +52,7 @@ public class SpawnNature : MonoBehaviour
             {
                 if (transform.position.z - posX.z <= 3f && transform.position.z - posX.z >= -3f)
                 {
+                    SceneManager.UnloadSceneAsync("Game");
                     SceneManager.LoadScene("GameOver");
                 }
             }
