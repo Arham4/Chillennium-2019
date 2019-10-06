@@ -39,5 +39,10 @@ namespace Menu
         {
             SceneManager.LoadScene("Tutorial");
         }
+
+        public void Night()
+        {
+            SceneManager.LoadScene("NightTime");
+        }
     }
 }

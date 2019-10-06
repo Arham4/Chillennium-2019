@@ -15,7 +15,7 @@ public class moveCar : MonoBehaviour
 
         if(transform.position.x > 1500f)
         {
-            SceneManager.LoadScene("NightTime");
+            SceneManager.LoadScene("Stats");
         }
     }
 }

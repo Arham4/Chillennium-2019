@@ -7,13 +7,15 @@ public class DriveCompleted : MonoBehaviour
 {
     //Checks to see when the level is over
     public float timeLeft = 10;
-    void Update()
+    void OnGUI()
     {
         timeLeft -= Time.deltaTime;
+
+        GUI.Label(new Rect(Screen.width / 4, Screen.height - 100, 300f, 50f), "Time: " + timeLeft);
+
         if (timeLeft < 0)
         {
             SceneManager.LoadScene("CarCutScene");
-            Debug.Log("MY MOM");
         }
 
     }
