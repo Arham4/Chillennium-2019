@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameOver.unity
     guid: b5102cbc3b8e9a8498d4c974e80c2997
+  - enabled: 1
+    path: Assets/Scenes/NightTime.unity
+    guid: f2ff5661b44ce4a4f95b03fdc9c6dd99
   m_configObjects: {}
