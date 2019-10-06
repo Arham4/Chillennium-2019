@@ -6,6 +6,9 @@ using Game;
 public class warningScript : MonoBehaviour
 {
     private GameObject warning;
+    private float counter = 0;
+    private bool add = true;
+    private float distance = 350;
 
     private void Start()
     {
@@ -16,25 +19,18 @@ public class warningScript : MonoBehaviour
     {
         if (GameSingleton.Instance.currentView != View.Backseat)
         {
+            add = true;
             warning.SetActive(false);
         }
-        else
+        
+        if(counter >= distance && GameSingleton.Instance.currentView == View.Backseat)
         {
-            //Collision is coming
-            var posX = GameObject.Find("Obstacle").transform.position;
-            var gObj = GameObject.Find("Obstacle");
-
-            if (gObj)
-            {
-                posX = gObj.transform.position;
-                var diff = transform.position.x - posX.x;
-
-                if (transform.position.x - posX.x <= 15f && transform.position.x - posX.x >= -15f)
-                {
-                    transform.position = new Vector3(transform.position.x + diff, transform.position.y, transform.position.z);
-                    warning.SetActive(true);
-                }
-            }
+            counter = 0;
+            warning.SetActive(true);
+            add = false;
         }
+
+        if(add)
+            counter++;
     }
 }

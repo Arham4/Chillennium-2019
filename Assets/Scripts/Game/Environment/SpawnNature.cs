@@ -37,6 +37,6 @@ public class SpawnNature : MonoBehaviour
                         SceneManager.LoadScene("GameOver");
                     }
                 }
-            }
+        }
     }
 }
