@@ -265,15 +265,19 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Someone
+  m_Text: 'Unity:
 
-    Other people
+    Tiny Worlds
 
-    Someone Else
+    OpenGamreArt:
 
-    That guy
+    n4
 
-    You'
+    domsson
+
+    Spring
+
+    PWL'
 --- !u!222 &436743273
 CanvasRenderer:
   m_ObjectHideFlags: 0
