@@ -1,10 +1,20 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace Menu
 {
     public class StartMenu : MonoBehaviour
     {
+        private AudioSource _audioSource;
+        private void Start()
+        {
+            _audioSource = GetComponent<AudioSource>();
+            _audioSource.clip = Resources.Load<AudioClip>("Songs/title");
+            _audioSource.loop = true;
+            _audioSource.Play();
+        }
+
         public void StartButton()
         {
             SceneManager.LoadScene("Game");
